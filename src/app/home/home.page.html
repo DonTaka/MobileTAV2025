@@ -33,6 +33,10 @@
           <div id="cuadroMsj">
             <ion-label>{{msj}}</ion-label>
           </div>
+          <div id="seccionCarga" *ngIf="carga">
+            <ion-label>Cargando</ion-label>
+            <mat-spinner></mat-spinner>
+          </div>
           <ion-button (click)="conectar()" shape="round" size="small" id="btnConectar">
             Conectar
           </ion-button>
