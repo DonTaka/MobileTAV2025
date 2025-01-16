@@ -1,6 +1,6 @@
 ion-header ion-toolbar ion-title {
   text-align: center;
-  font-size: large
+  font-size: x-large;
 }
 
 #btnConectar {
@@ -9,6 +9,25 @@ ion-header ion-toolbar ion-title {
 
 }
 
+#container ion-card ion-card-header ion-card-title {
+  font-size: xx-large;
+}
+
+#container ion-card {
+  --background: transparent;
+
+
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+    --border-style: none;
+
+  }
+}
 #container ion-card ion-card-header ion-img {
   width: 150px;
   height: 150px;
@@ -34,3 +53,5 @@ ion-header ion-toolbar ion-title {
   margin: auto;
   margin-top: 3%;
 }
+
+

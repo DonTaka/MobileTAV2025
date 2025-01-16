@@ -28,6 +28,7 @@ export class HomePage {
           state: { user: this.user },
         };
         this.carga = true;
+        this.animacionLogin().play();
         this.msj = 'Conexion Exitosa';
         /* setTimeout permite generar un delay en MS */
         setTimeout(() => {
@@ -43,11 +44,9 @@ export class HomePage {
     }
   }
 
-  ngAfterContentInit() {
-    this.animacionLogin();
-  }
+  ngAfterContentInit() {}
 
-  animacionLogin() {
+  animacion() {
     /* Seleccionamos el elemento que deseamos utilizar para la animacion
        POr medio de un querySelector
     */
@@ -97,5 +96,23 @@ export class HomePage {
       ]);
     /* Por ultimo le damos play a la animacion para que empiece */
     animacion.play();
+  }
+
+  animacionLogin() {
+    const imagen = document.querySelector(
+      '#container ion-card ion-card-header ion-img'
+    ) as HTMLElement;
+
+    const animacion = this.animation
+      .create()
+      .addElement(imagen)
+      .duration(6000)
+      .iterations(1)
+      .keyframes([
+        { offset: 0, transform: 'rotateY(0deg)' },
+        { offset: 0.5, transform: 'rotateY(180deg)' },
+        { offset: 1, transform: 'rotateY(0deg)' },
+      ]);
+    return animacion;
   }
 }

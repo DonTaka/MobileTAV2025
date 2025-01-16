@@ -1,0 +1,37 @@
+ion-header ion-toolbar ion-title {
+  text-align: center;
+  font-size: x-large;
+}
+
+#btnConectar {
+  margin-top: 5%;
+  color: white;
+
+}
+
+#container ion-card ion-card-header ion-card-title {
+  font-size: xx-large;
+}
+
+#container ion-card {
+  --background: transparent;
+
+
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+    --border-style: none;
+
+  }
+
+  color:white;
+}
+
+
+ion-card-content {
+  padding: 15%
+}
