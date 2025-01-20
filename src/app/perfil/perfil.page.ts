@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Servicios/auth.service';
-import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -12,7 +12,7 @@ import { ToastController } from '@ionic/angular';
 export class PerfilPage implements OnInit {
   constructor(
     private auth: AuthService,
-    private router: Router,
+    private router:Router,
     private toast: ToastController
   ) {}
   user = {
