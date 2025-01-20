@@ -29,7 +29,7 @@
           <ion-item>
             <ion-input type="password" [(ngModel)]="user.password" label="Contraseña" labelPlacement="floating"
               placeholder="Ingrese su contraseña">
-              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+              <ion-input-password-toggle slot="end" color="danger"></ion-input-password-toggle>
             </ion-input>
           </ion-item>
           <div id="cuadroMsj">
@@ -39,7 +39,7 @@
             <ion-label>Cargando</ion-label>
             <mat-spinner></mat-spinner>
           </div>
-          <ion-button (click)="conectar()" shape="square" size="small" fill="outline" id="btnConectar">
+          <ion-button (click)="conectar()" shape="square" size="small" fill="outline" color="danger" id="btnConectar">
             Conectar
           </ion-button>
         </ion-list>

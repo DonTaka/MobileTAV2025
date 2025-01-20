@@ -45,3 +45,18 @@ ion-header {
 #container a {
   text-decoration: none;
 }
+#container ion-card {
+  --background: rgba(0, 0, 0, 0.473);
+
+
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+    --border-style: none;
+
+  }
+}

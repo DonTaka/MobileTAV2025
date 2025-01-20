@@ -1,7 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="danger" (click)="logout()">
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>perfil</ion-title>
   </ion-toolbar>
