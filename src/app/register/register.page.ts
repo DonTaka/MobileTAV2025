@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from '../Servicios/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,11 @@ import { ToastController } from '@ionic/angular';
   standalone: false,
 })
 export class RegisterPage implements OnInit {
-  constructor(private toast: ToastController, private router: Router) {}
+  constructor(
+    private toast: ToastController,
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   user = {
     usuario: '',
@@ -19,20 +24,27 @@ export class RegisterPage implements OnInit {
   ngOnInit() {}
 
   registrar() {
+    //Verificamos que los campos tengan valor
     if (
       this.user.usuario.trim().length > 0 ||
       this.user.password.trim().length > 0 ||
       this.user.correo.trim().length > 0
     ) {
-      const navigation: NavigationExtras = {
-        state: {
-          user: this.user,
-        },
-      };
-      this.generarToast('Registro Exitoso \n Redireccionando');
-      setTimeout(() => {
-        this.router.navigate(['/perfil'], navigation);
-      }, 3000);
+      //Verificar si el registro se realizo
+      if (
+        this.auth.registrar(
+          this.user.usuario,
+          this.user.correo,
+          this.user.password
+        )
+      ) {
+        this.generarToast('Registro Exitoso \n Redireccionando');
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 1500);
+      } else {
+        this.generarToast('Correo o usuario ya existen');
+      }
     } else {
       this.generarToast('Credenciales no pueden estar vacias');
     }

@@ -25,7 +25,8 @@ export class HomePage {
 
   conectar() {
     if (this.user.usuario.length > 0 && this.user.password.length > 0) {
-      if (this.auth.login(this.user.usuario, this.user.password)) {
+      if (this.auth.loginStorage(this.user.usuario, this.user.password)) {
+        
         let navigationExtras: NavigationExtras = {
           state: { user: this.user },
         };
