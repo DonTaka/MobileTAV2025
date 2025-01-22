@@ -1,0 +1,23 @@
+{
+    "users":[
+        {
+            "id":1,
+            "username":"j.riquelmee",
+            "correo":"correo@correo.cl",
+            "pass":"pass1234"
+        },
+        {
+            "id":2,
+            "username":"admin",
+            "correo":"admin@correo.cl",
+            "pass":"admin1234"
+        },
+        {
+            "id":3,
+            "username":"us123",
+            "correo":"us123@correo.cl",
+            "pass":"us1234"
+        }
+        
+    ]
+}

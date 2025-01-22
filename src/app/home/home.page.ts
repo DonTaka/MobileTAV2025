@@ -25,23 +25,24 @@ export class HomePage {
 
   conectar() {
     if (this.user.usuario.length > 0 && this.user.password.length > 0) {
-      if (this.auth.loginStorage(this.user.usuario, this.user.password)) {
-        
-        let navigationExtras: NavigationExtras = {
-          state: { user: this.user },
-        };
-        this.carga = true;
-        this.animacionLogin().play();
-        this.msj = 'Conexion Exitosa';
-        /* setTimeout permite generar un delay en MS */
-        setTimeout(() => {
-          this.router.navigate(['/perfil'], navigationExtras);
-          this.msj = '';
-          this.carga = false;
-        }, 3000);
-      } else {
-        this.msj = 'Credenciales erroneas';
-      }
+      this.auth.loginAPI(this.user.usuario, this.user.password).then((res) => {
+        if (res) {
+          let navigationExtras: NavigationExtras = {
+            state: { user: this.user },
+          };
+          this.carga = true;
+          this.animacionLogin().play();
+          this.msj = 'Conexion Exitosa';
+          /* setTimeout permite generar un delay en MS */
+          setTimeout(() => {
+            this.router.navigate(['/perfil'], navigationExtras);
+            this.msj = '';
+            this.carga = false;
+          }, 3000);
+        } else {
+          this.msj = 'Credenciales erroneas';
+        }
+      });
     } else {
       this.msj = 'Credenciales no pueden estar vacias';
     }
