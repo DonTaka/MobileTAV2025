@@ -19,7 +19,7 @@ export class RegisterPage implements OnInit {
   user = {
     usuario: '',
     correo: '',
-    password: '',
+    password: 'pass1234',
   };
   ngOnInit() {}
 
@@ -31,20 +31,18 @@ export class RegisterPage implements OnInit {
       this.user.correo.trim().length > 0
     ) {
       //Verificar si el registro se realizo
-      if (
-        this.auth.registrar(
-          this.user.usuario,
-          this.user.correo,
-          this.user.password
-        )
-      ) {
-        this.generarToast('Registro Exitoso \n Redireccionando');
-        setTimeout(() => {
-          this.router.navigate(['/home']);
-        }, 1500);
-      } else {
-        this.generarToast('Correo o usuario ya existen');
-      }
+      this.auth
+        .registerAPI(this.user.usuario, this.user.correo, this.user.password)
+        .then((res) => {
+          if (res) {
+            this.generarToast('Registro Exitoso \n Redireccionando');
+            setTimeout(() => {
+              this.router.navigate(['/home']);
+            }, 1500);
+          } else {
+            this.generarToast('Credenciales ya existen');
+          }
+        });
     } else {
       this.generarToast('Credenciales no pueden estar vacias');
     }

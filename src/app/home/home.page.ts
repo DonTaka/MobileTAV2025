@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
 import { AuthService } from '../Servicios/auth.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +49,12 @@ export class HomePage {
     }
   }
 
-  ngAfterContentInit() {}
+  ngAfterContentInit() {
+    Geolocation.getCurrentPosition().then((posicion) => {
+      console.log('Latitud: ' + posicion.coords.latitude);
+      console.log('Longitud: ' + posicion.coords.longitude);
+    });
+  }
 
   animacion() {
     /* Seleccionamos el elemento que deseamos utilizar para la animacion

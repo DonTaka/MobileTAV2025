@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { APIService } from './api.service';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +24,7 @@ export class AuthService {
     }
   }
 
-  loginStorage(user: string, pass: string): boolean {    
-
+  loginStorage(user: string, pass: string): boolean {
     //Obtenemos la lista de usuarios
     const listaUsuarios = this.storage.getItem('users') || [];
     //Filtramos la lista segun su usuario/correo y su contraseña
@@ -90,6 +90,30 @@ export class AuthService {
     listaUsuarios.push(nuevoUsuario);
     //Devolvemos el registro de usuarios a su lugar
     this.storage.setItem('users', listaUsuarios);
+    return true;
+  }
+  /*  */
+  async registerAPI(
+    user: string,
+    correo: string,
+    pass: string
+  ): Promise<boolean> {
+    const users = await firstValueFrom(this.api.listarUsuarios());
+    const exists =
+      users.find((us: any) => us.username == user || us.correo == correo) !=
+      null;
+    if (exists) {
+      return false;
+    }
+
+    const nuevoUsuario = {
+      id: users.length + 1,
+      username: user,
+      correo: correo,
+      pass: pass,
+    };
+    await this.api.register(nuevoUsuario).subscribe();
+
     return true;
   }
 
