@@ -16,7 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
   //Agregar MatProgressSpinnerModule a los imports
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'md',
+      animated: true,
+      rippleEffect: true,
+      hardwareBackButton: true,
+    }),
     AppRoutingModule,
     MatProgressSpinnerModule,
     HttpClientModule,

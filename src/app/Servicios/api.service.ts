@@ -6,7 +6,7 @@ import { catchError, Observable, retry, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class APIService {
-  private baseURL = 'http://localhost:3000';
+  private baseURL = 'https://vtflchsw-3000.brs.devtunnels.ms';
   private http: HttpClient = inject(HttpClient);
   constructor() {}
 

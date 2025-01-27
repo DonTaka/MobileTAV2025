@@ -19,16 +19,22 @@
       "pass": "us1234"
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "jose",
       "correo": "correo@gmail.com",
       "pass": "pass1234"
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "jos",
       "correo": "admin",
       "pass": "pass1234"
+    },
+    {
+      "id": 6,
+      "username": "Usertest",
+      "correo": "Test@correo.cl",
+      "pass": "test1234"
     }
   ]
 }
