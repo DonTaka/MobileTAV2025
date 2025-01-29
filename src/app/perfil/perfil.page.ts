@@ -12,18 +12,20 @@ import { Router } from '@angular/router';
 export class PerfilPage implements OnInit {
   constructor(
     private auth: AuthService,
-    private router:Router,
+    private router: Router,
     private toast: ToastController
-  ) {}
+  ) { }
   user = {
     usuario: '',
     password: '',
   };
   nombreUsuario = '';
-  ngOnInit() {}
+  ngOnInit() { }
   ngAfterContentInit() {
-    this.user = history.state.user;
-    this.nombreUsuario = this.user.usuario;
+    if (history.state?.user) {
+      this.user = history.state.user;
+      this.nombreUsuario = this.user.usuario;
+    }
   }
 
   logout() {
